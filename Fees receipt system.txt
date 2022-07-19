@@ -1,0 +1,204 @@
+package feereceipt;
+ import javax.swing.*;
+ import java.awt.*; 
+import java.awt.event.*;
+ import java.util.*; 
+import java.io.*;
+
+class FeeReceipt
+
+static JFrame frame = new JFrame();
+static JTextField amounttext = new JTextField();
+ static JTextField nametext = new JTextField();
+ static JTextField rolltext = new JTextField(); 
+static JTextField regtext = new JTextField();
+ static JTextField depttext = new JTextField();
+ static JTextField yrtext = new JTextField(); 
+static JTextField tutitext = new JTextField();
+ static JTextField bktext = new JTextField();
+ static JTextField tftext = new JTextField();
+static JTextField cnametext = new JTextField(); 
+static JTextArea receiptarea = new JTextArea(); 
+static JButton reset = new JButton("RESET");
+static JButton generatereceipt = new JButton("GENERATE RECEIPT"); 
+static JButton printreceipt = new JButton("PRINT RECEIPT");
+static int num =0;
+public static void main(String[] args) JPanel header = new JPanel();
+JLabel headerlabel = new JLabe1("FEES RECEIPT SYSTEM");
+JPanel cname = new JPanel();
+JLabel cnamelabel = new JLabel("COLLEGE NAME : ");
+ JPanel name = new JPanel();
+JLabel namelabel = new JLabel(”STUDENT NAME : ");
+ JPanel roll = new JPanel();
+JLabel ro111abe1 = new JLabe1("ROLL NUMBER : ");
+JPanel reg = new JPanel();
+JLabel reglabel = new JLabe1("REGISTER NO . : ");
+ JPanel dept = new JPanel();
+JLabel deptlabel = new JLabe1("DEPARTMENT : "); 
+JPanel yr = new JPanel();
+ 
+JLabel yrlabel = new JLabe1("YEAR	  JPanel tuti = new JPanel();
+JLabel tutilabel = new JLabel("TUITION FEES : "); 
+JPanel bk = new JPanel();
+JLabel bklabel = new JLabe1("BOOK FEES	: "); 
+JPanel tf= new JPanel();
+JLabel tflabel = new JLabel("TRANSPORT&FOOD: ");
+ JPanel amount = new JPanel();
+JLabel amountlabel = new JLabe1("TOTAL AMOUNT : ");
+
+frame.setDefau1tCloseOperation(JFrame.EXIT ON CLOSE); 
+frame.setBounds(25,0,1315,725);
+frame.setVisible(true); frame.setTit1e("FEES RECEIPT");
+
+Container cntr = frame.getContentPane();
+ cntr.setLayout(null);
+ cntr.setBackground(new Color(44, 62, 80)); 
+cntr.add(header);
+header.setLayout(null);
+ header.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+ header.setBounds(0,0,1500,100);
+header.setBackground(new Color(248, 148, 6));
+ header.add(headerlabel); 
+headerlabel.setBounds(400,0,625,100);
+
+Font f= new Font("Times New Roman",Font.BOLD,50); 
+headerlabel.setFont(f);
+Font fl = new Font("Times New Roman",Font.BOLD,20);
+ namelabel.setFont(fl);
+rolllabel.setFont(fl); 
+reglabel.setFont(f1);
+ deptlabel.setFont(fl);
+ yrlabel.setFont(fl);
+ tutilabel.setFont(f1); 
+bklabel.setFont(fl); 
+tflabel.setFont(fl); 
+cnamelabel.setFont(f1); 
+amountlabel.setFont(fl);
+ generatereceipt.setFont(fl);
+ reset.setFont(fl); 
+printreceipt.setFont(f1);
+ 
+Font f2 = new Font("Times New Roman",Font.BOLD,15);
+ nametext.setFont(f2);
+rolltext.setFont(f2); 
+regtext.setFont(f2); 
+depttext.setFont(f2);
+ yrtext.setFont(f2);
+ tutitext.setFont(f2);
+ bktext.setFont(f2);
+ tftext.setFont(f2);
+ cnametext.setFont(f2); 
+amounttext.setFont(f2); 
+receiptarea.setFont(f2);
+
+cntr.add(cname); cname.setLayout(null);
+cname.setBorder(BorderFactory.createLineBorder(Color.BLACK)); cname.setBounds(75,125,500,50);
+cname.add(cnamelabel); cnamelabel.setBounds(10,0,275,50); cname.add(cnametext); cnametext.setBounds(215,15,270,20);
+
+cntr.add(name); name.setLayout(null);
+name.setBorder(BorderFactory.createLineBorder(Color.BLACK)); name.setBounds(75,175,500,50);
+name.add(namelabel); namelabel.setBounds(10,0,200,50); name.add(nametext); nametext.setBounds(215,15,270,20);
+
+cntr.add(roll); roll.setLayout(null);
+roll.setBorder(BorderFactory.createLineBorder(Color.BLACK)); roll.setBounds(75,225,500,50);
+roll.add(rolllabel); ro111abe1.setBounds(10,0,175,50); roll.add(rolltext); rolltext.setBounds(215,15,270,20);
+
+cntr.add(reg); reg.setLayout(null);
+reg.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+ 
+reg.setBounds(75,275,500,50); reg.add(reglabel); reglabel.setBounds(10,0,175,50); reg.add(regtext); regtext.setBounds(215,15,270,20);
+
+cntr.add(dept); dept.setLayout(null);
+dept.setBorder(BorderFactory.createLineBorder(Color.BLACK)); dept.setBounds(75,325,500,50);
+dept.add(deptlabel); deptlabel.setBounds(10,0,175,50); dept.add(depttext); depttext.setBounds(215,15,270,20);
+
+cntr.add(yr); yr.setLayout(null);
+yr.setBorder(BorderFactory.createLineBorder(Color.BLACK)); yr.setBounds(75,375,500,50);
+yr.add(yrlabel); yrlabel.setBounds(10,0,185,50); yr.add(yrtext); yrtext.setBounds(215,15,270,20);
+
+cntr.add(tuti); tuti.setLayout(null);
+tuti.setBorder(BorderFactory.createLineBorder(Color.BLACK)); tuti.setBounds(75,425,500,50);
+tuti.add(tutilabel); tutilabel.setBounds(10,0,175,50); tuti.add(tutitext); tutitext.setBounds(215,15,270,20);
+
+cntr.add(bk); bk.setLayout(null);
+bk.setBorder(BorderFactory.createLineBorder(Color.BLACK)); bk.setBounds(75,475,500,50);
+bk.add(bklabel); bklabel.setBounds(10,0,195,50); bk.add(bktext); bktext.setBounds(215,15,270,20);
+
+cntr.add(tf);
+ 
+tf.setLayout(null); tf.setBorder(BorderFactory.createLineBorder(Color.BLACK)); tf.setBounds(75,525,500,50);
+tf.add(tflabel); tflabel.setBounds(10,0,230,50); tf.add(tftext); tftext.setBounds(215,15,270,20);
+
+cntr.add(amount); amount.setLayout(null);
+amount.setBorder(BorderFactory.createLineBorder(Color.BLACK)); amount.setBounds(75,575,500,50);
+amount.add(amountlabel); amountlabel.setBounds(10,0,200,50); amount.add(amounttext); amounttext.setBounds(215,15,270,20);
+
+cntr.add(receiptarea); receiptarea.setBorder(BorderFactory.createLineBorder(Co1or.BLACK)); receiptarea.setBounds(650,125,600,500);
+
+
+cntr.add(generatereceipt); generatereceipt.setBounds(100,640,300,40); generatereceipt.setBackground(new Co1or(0, 181, 204));
+
+cntr.add(reset); reset.setBounds(450,640,300,40); reset.setBackground(new Color(0, 181, 204));
+
+cntr.add(printreceipt); printreceipt.setBounds(800,640,300,40); printreceipt.setBackground(new Color(0, 181, 204));
+
+receiptarea.setEditab1e(false); reset.addActionListener(new ActionListener()
+public void actionPerformed(ActionEvent event) reset action(event);
+ 
+generatereceipt.addActionListener(new ActionListener()
+
+public void actionPerformed(ActionEvent event) generatereceipt action(event);
+
+
+printreceipt.addActionListener(new ActionListener()
+
+public void actionPerformed(ActionEvent event) printreceipt action(event);
+
+
+
+public static void reset action(ActionEvent event)
+ 
+
+amounttext.setText("”); nametext.setText(""); rolltext.setText(""); regtext.setText(""); depttext.setText("”); yrtext.setText(""); tutitext.setText(""); bktext.setText("");
+tftext.setText(""); cnametext.setText(""); receiptarea.setText("");
+
+
+public static void generatereceipt action(ActionEvent event)
+ 
+
+try
+
+FileInputStream fin = new Fi1eInputStream("receipt number.txt"); int i = 0;
+while((i = fin.read())!= -1) num=i;
+fin.close();
+ 
+
+catch(Exception e)
+
+System.out.print1n(e);
+
+
+Date obj = new Date(); String date = obj.toString();
+
+receiptarea.setText("\t********************\n"); receiptarea.setText(""+receiptarea.getText()+"\t	FEES RECEIPT\n"); receiptarea.setText(""+receiptarea.getText()+"\t********************\n\n"+date+"
+Receipt Number : "+(num+1));
+receiptarea.setText("”+receiptarea.getText()+"\n\n\n COLLEGE NAME : "+cnametext.getText());
+receiptarea.setText("”+receiptarea.getText()+"\n\n STUDENT NAME : "+nametext.getText()); receiptarea.setText(""+receiptarea.getText()+"\n\n ROLL NUMBER : "+rolltext.getText()); receiptarea.setText(""+receiptarea.getText()+"\n\n REGISTER NUMBER : "+regtext.getText()); receiptarea.setText(""+receiptarea.getText()+"\n\n DEPARTMENT : ”+depttext.getText()); receiptarea.setText("”+receiptarea.getText()+"\n\n YEAR : "+yrtext.getText()); receiptarea.setText(""+receiptarea.getText()+"\n\n TUITION FEES : "+tutitext.getText()); receiptarea.setText(""+receiptarea.getText()+"\n\n BOOK FEES :"+bktext.getText()); receiptarea.setText(""+receiptarea.getText()+"\n\n TRANSPORT&FOOD FEES :
+"+tftext.getText());
+receiptarea.setText(""+receiptarea.getText()+"\n\n TOTAL AMOUNT : "+amounttext.getText()+"\t\t\t CASHIER");
+
+
+public static void printreceipt action(ActionEvent event)
+ 
+
+ 
+tW(
+ 
+
+receiptarea.print();
+ 
+
+catch(Exception e)
+
+
+tvFileOutputStream fout = new Fi1eOutputStream("receipt number.txt",true); num++;
