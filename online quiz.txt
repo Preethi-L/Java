@@ -14,7 +14,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
         // create JLabel,JRadioButton,JButton on JFrame
 	JLabel label;
 	JRadioButton radioButton[] = new JRadioButton[5];
-	JButton btnNext,btnBk;
+	JButton btnNext,btnBk,btnFwd,btnResult;
 	ButtonGroup bg;
 	int count = 0, question = 0,x=1,y=1,now=0;
         int m[] = new int[10];
@@ -32,12 +32,18 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			add(radioButton[i]);
 			bg.add(radioButton[i]);
 		}
+                btnResult=new JButton("Submit");
+                btnFwd=new JButton("<<Back");
 		btnNext = new JButton("Next >>");
                btnBk = new JButton("Bookmark");
+               btnFwd.addActionListener(this);
 		btnNext.addActionListener(this);          
                 btnBk.addActionListener(this);
-		add(btnNext);           
+                btnResult.addActionListener(this);
+                add(btnFwd);
+                add(btnNext);           
                 add(btnBk);
+                add(btnResult);
                 set();
 		
 		label.setBounds(30, 40, 450, 20);
@@ -45,8 +51,10 @@ class OnlineQuiz extends JFrame implements ActionListener {
 		radioButton[1].setBounds(50, 110, 200, 20);
 		radioButton[2].setBounds(50, 140, 200, 20);
 		radioButton[3].setBounds(50, 170, 200, 20);
-		btnNext.setBounds(100, 240, 100, 30);
+                btnFwd.setBounds(30,240,100,30);
+                btnNext.setBounds(150, 240, 100, 30);
                 btnBk.setBounds(270, 240, 100, 30);
+                btnResult.setBounds(400,240,100,30);
                 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(null);
@@ -54,8 +62,6 @@ class OnlineQuiz extends JFrame implements ActionListener {
 		setVisible(true);
 		setSize(600, 350);
         }
-	
-
                     //submit button
         
 	// override actionPerformed method and handle all the action performed
@@ -66,11 +72,15 @@ class OnlineQuiz extends JFrame implements ActionListener {
 				count = count + 1;
 			question++;
 			set();
-			if (question == 9) {
-				btnNext.setEnabled(false);
-				btnBk.setText("Result");
-			}
-		}
+			
+                }
+                if (e.getSource() == btnFwd) {
+			if (choice())
+				count = count - 1;
+			question--;
+			set();
+			
+                }
 		if (e.getActionCommand().equals("Bookmark")) {
 			JButton bk = new JButton("Bookmark" + x);
 			bk.setBounds(480, 20 + 30 * x, 100, 30);
@@ -80,8 +90,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			x++;
 			question++;
 			set();
-			if (question == 9)
-				btnBk.setText("Result");
+			
 			setVisible(false);
 			setVisible(true);
 		}
@@ -96,7 +105,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
 				question = now;
 			}
 		}
-
+                  
 		if (e.getActionCommand().equals("Result")) {
 			if (choice())
 				count = count + 1;
@@ -109,11 +118,11 @@ class OnlineQuiz extends JFrame implements ActionListener {
 	void set() {
 		radioButton[0].setSelected(true);
 		if (question == 0) {
-			label.setText("1) Which of the following option leads to the portability and security of Java?");
-			radioButton[0].setText("The applet makes the Java code secure and portable");
-			radioButton[1].setText("Bytecode is executed by JVM");
-			radioButton[2].setText("Use of exception handling");
-			radioButton[3].setText("Dynamic binding between objects");
+			label.setText("1) What are the OOPS concept in Java?");
+			radioButton[0].setText("Abstraction");
+			radioButton[1].setText("Encapsulation");
+			radioButton[2].setText("Inheritance");
+			radioButton[3].setText("All the above");
 		}
 		if (question == 1) {
 			label.setText("2) Which of the following is not a Java features? ");
@@ -123,14 +132,14 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			radioButton[3].setText("Object-oriented");
 		}
 		if (question == 2) {
-			label.setText("3) What should be the execution order, if a class has a method, static block, instance block, and constructor?");
-			radioButton[0].setText("Static block, instance block, constructor, and method");
-			radioButton[1].setText("Instance block, method, static block, and constructor");
-			radioButton[2].setText("Method, constructor, instance block, and static block");
-			radioButton[3].setText("Static block, method, instance block, and constructor");
+			label.setText("3) How many layers are there in OSI model?");
+			radioButton[0].setText("7");
+			radioButton[1].setText("9");
+			radioButton[2].setText("5");
+			radioButton[3].setText("6");
 		}
 		if (question == 3) {
-			label.setText("4) Which is used to find and fix bugs in the Java programs?");
+			label.setText("4) Which is used to find and fix bugs?");
 			radioButton[0].setText("jre");
 			radioButton[1].setText("jvm");
 			radioButton[2].setText("jdb");
@@ -144,7 +153,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			radioButton[3].setText("char cc = '\\itea';");
 		}
 		if (question == 5) {
-			label.setText("6) Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?");
+			label.setText("6) Which of the following tool is used to generate API documentation?");
 			radioButton[0].setText("javap tool");
 			radioButton[1].setText("javaw command");
 			radioButton[2].setText("Javadoc tool");
@@ -158,11 +167,11 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			radioButton[3].setText("for ( int i = 2; i <= 20; i = 2* i )");
 		}
 		if (question == 7) {
-			label.setText("8) Which method of the Class.class is used to determine the name of a class represented by the class object as a String?");
-			radioButton[0].setText("getClass()");
-			radioButton[1].setText("intern()");
-			radioButton[2].setText("getName()");
-			radioButton[3].setText("toString()");
+			label.setText("8) What is not the necessary conditions for deadlock?");
+			radioButton[0].setText("Mutual Exclusion");
+			radioButton[1].setText("Hold and wait");
+			radioButton[2].setText("Preemption");
+			radioButton[3].setText("Circular Queue");
 		}
 		if (question == 8) {
 			label.setText("9)  Which package contains the Random class?");
@@ -172,17 +181,17 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			radioButton[3].setText("java.io package");
 		}
 		if (question == 9) {
-			label.setText("10) Which of these classes are the direct subclasses of the Throwable class?");
-			radioButton[0].setText("Error and Exception class");
-			radioButton[1].setText("RuntimeException and Error class");
-			radioButton[2].setText("Exception and VirtualMachineError class");
-			radioButton[3].setText("IOException and VirtualMachineError class");
+			label.setText("10) In System.out.print() what does System denote?");
+			radioButton[0].setText("Variable");
+			radioButton[1].setText("Object");
+			radioButton[2].setText("Class");
+			radioButton[3].setText("Method");
 		}
 	}
 	// declaring right options
 	boolean choice() {
 		if (question == 0)
-			return (radioButton[1].isSelected());
+			return (radioButton[3].isSelected());
 		if (question == 1)
 			return (radioButton[1].isSelected());
 		if (question == 2)
@@ -200,7 +209,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
 		if (question == 8)
 			return (radioButton[3].isSelected());
 		if (question == 9)
-			return (radioButton[0].isSelected());
+			return (radioButton[2].isSelected());
 		return false;
 	}
         //main method
