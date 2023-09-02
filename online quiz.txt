@@ -41,7 +41,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
                 btnBk.addActionListener(this);
                 btnResult.addActionListener(this);
                 add(btnFwd);
-                add(btnNext);           
+		add(btnNext);           
                 add(btnBk);
                 add(btnResult);
                 set();
@@ -52,7 +52,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
 		radioButton[2].setBounds(50, 140, 200, 20);
 		radioButton[3].setBounds(50, 170, 200, 20);
                 btnFwd.setBounds(30,240,100,30);
-                btnNext.setBounds(150, 240, 100, 30);
+		btnNext.setBounds(150, 240, 100, 30);
                 btnBk.setBounds(270, 240, 100, 30);
                 btnResult.setBounds(400,240,100,30);
                 
@@ -106,7 +106,7 @@ class OnlineQuiz extends JFrame implements ActionListener {
 			}
 		}
                   
-		if (e.getActionCommand().equals("Result")) {
+		if (e.getActionCommand().equals("Submit")) {
 			if (choice())
 				count = count + 1;
 			question++;
@@ -219,3 +219,4 @@ class OnlineQuiz extends JFrame implements ActionListener {
 		
 	}
 }
+
